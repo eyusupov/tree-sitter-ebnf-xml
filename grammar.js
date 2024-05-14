@@ -1,0 +1,45 @@
+module.exports = grammar({
+  name: 'ebnf',
+
+  rules: {
+    document: $ => seq(repeat(seq($.rule, '\n')), optional($.rule)),
+    rule: $ => prec(3, seq($._symbol, '::=', $._expression)),
+    _symbol: $ => choice($.start_symbol, $.symbol),
+    start_symbol: $ => /\p{Uppercase}(\w|_)*/,
+    symbol: $ => /\p{Lowercase}(\w|_)*/,
+    _expression: $ => choice(
+      $.symbol,
+      $.hex_integer,
+      $.char_match,
+      $.unit,
+      $.string_literal,
+      $.optional,
+      $.sequence,
+      $.alternation,
+      $.difference,
+      $.one_or_more,
+      $.zero_or_more
+    ),
+    hex_integer: $ => seq('#x', /[0-9]+/),
+    char_match: $ => seq('[', optional($.neg_marker), repeat1(choice($.char_enum, $.char_range)), ']'),
+    neg_marker: $ => '^',
+    enum_character: $ => /[^\]]|\\\]'/,
+    range_character: $ => /[^-]/,
+    char_range: $ => /[^-\]]+-?/,
+    char_enum: $ => prec.left(1, repeat1(choice($.hex_integer, $.enum_character))),
+    unit: $ => prec(3, seq('(', $._expression, ')')),
+    string_literal: $ => choice($.double_quoted_string, $.single_quoted_string),
+    single_quoted_string: $ => /'([^']|\\')*'/,
+    double_quoted_string: $ => /"([^"]|\\")*"/,
+    optional: $ => prec(2, seq($._expression, '?')),
+    sequence: $ => prec.left(1, seq($._expression, repeat1($._expression))),
+    alternation: $ => prec.left(1, seq($._expression, repeat1(seq('|', $._expression)))),
+    difference: $ => prec(2, prec.left(seq($._expression, '-', $._expression))),
+    one_or_more: $ => prec(2, seq($._expression, '+')),
+    zero_or_more: $ => prec(2, seq($._expression, '*')),
+    comments: $ => seq('/*', repeat(/./), '*/'),
+    wfc: $ => seq('[ wfc:', $.constraint_name, ']'),
+    vc: $ => seq('[ vc:', $.constraint_name, ']'),
+    constraint_name: $ => /[^\]]/
+  }
+});
