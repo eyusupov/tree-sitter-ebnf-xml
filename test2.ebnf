@@ -1,0 +1,3 @@
+rule ::= [a-f]
+rule ::= [abc]
+rule ::= [abc-fgh]

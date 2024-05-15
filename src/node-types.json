@@ -8,66 +8,22 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
-          "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "expression",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "char_enum",
+    "type": "body",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "enum_character",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
+          "type": "expression",
           "named": true
         }
       ]
@@ -79,22 +35,31 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "char_enum",
+          "type": "hex_integer",
           "named": true
         },
         {
-          "type": "char_range",
+          "type": "match_character",
           "named": true
         },
         {
           "type": "neg_marker",
           "named": true
+        },
+        {
+          "type": "range",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "comments",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "difference",
@@ -102,6 +67,26 @@
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "double_quoted_string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -117,7 +102,7 @@
           "named": true
         },
         {
-          "type": "hex_integer",
+          "type": "hex_char",
           "named": true
         },
         {
@@ -129,15 +114,15 @@
           "named": true
         },
         {
+          "type": "rule_ref",
+          "named": true
+        },
+        {
           "type": "sequence",
           "named": true
         },
         {
           "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
           "named": true
         },
         {
@@ -152,7 +137,7 @@
     }
   },
   {
-    "type": "document",
+    "type": "grammar",
     "named": true,
     "fields": {},
     "children": {
@@ -167,9 +152,34 @@
     }
   },
   {
-    "type": "hex_integer",
+    "type": "hex_char",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "hex_integer",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "one_or_more",
@@ -180,47 +190,7 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
-          "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "expression",
           "named": true
         }
       ]
@@ -235,47 +205,26 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
+          "type": "expression",
           "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
         {
           "type": "hex_integer",
           "named": true
         },
         {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "match_character",
           "named": true
         }
       ]
@@ -290,51 +239,30 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
+          "type": "body",
           "named": true
         },
         {
-          "type": "char_match",
+          "type": "label",
           "named": true
         },
         {
-          "type": "difference",
+          "type": "name",
           "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "start_symbol",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "rule_ref",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
         {
           "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
           "named": true
         }
       ]
@@ -349,47 +277,7 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
-          "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "expression",
           "named": true
         }
       ]
@@ -415,6 +303,11 @@
     }
   },
   {
+    "type": "symbol",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "unit",
     "named": true,
     "fields": {},
@@ -423,47 +316,7 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
-          "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "expression",
           "named": true
         }
       ]
@@ -478,59 +331,11 @@
       "required": true,
       "types": [
         {
-          "type": "alternation",
-          "named": true
-        },
-        {
-          "type": "char_match",
-          "named": true
-        },
-        {
-          "type": "difference",
-          "named": true
-        },
-        {
-          "type": "hex_integer",
-          "named": true
-        },
-        {
-          "type": "one_or_more",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        },
-        {
-          "type": "sequence",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "unit",
-          "named": true
-        },
-        {
-          "type": "zero_or_more",
+          "type": "expression",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "\n",
-    "named": false
-  },
-  {
-    "type": "#x",
-    "named": false
   },
   {
     "type": "(",
@@ -585,19 +390,23 @@
     "named": false
   },
   {
-    "type": "char_range",
-    "named": true
+    "type": "_string",
+    "named": false
   },
   {
     "type": "constraint_name",
     "named": true
   },
   {
-    "type": "double_quoted_string",
+    "type": "hex_integer",
     "named": true
   },
   {
-    "type": "enum_character",
+    "type": "label",
+    "named": true
+  },
+  {
+    "type": "match_character",
     "named": true
   },
   {
@@ -606,14 +415,6 @@
   },
   {
     "type": "single_quoted_string",
-    "named": true
-  },
-  {
-    "type": "start_symbol",
-    "named": true
-  },
-  {
-    "type": "symbol",
     "named": true
   },
   {

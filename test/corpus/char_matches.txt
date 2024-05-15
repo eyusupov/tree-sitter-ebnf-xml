@@ -1,0 +1,36 @@
+=================
+Character matches
+=================
+rule ::= [a-f]
+rule ::= [abc]
+rule ::= [abc-fgh]
+---
+(grammar
+  (rule
+    (name
+      (symbol))
+    (body
+      (char_match
+        (range
+          (match_character)
+          (match_character)))))
+  (rule
+    (name
+      (symbol))
+    (body
+      (char_match
+        (match_character)
+        (match_character)
+        (match_character))))
+  (rule
+    (name
+      (symbol))
+    (body
+      (char_match
+        (match_character)
+        (match_character)
+        (range
+          (match_character)
+          (match_character))
+        (match_character)
+        (match_character)))))

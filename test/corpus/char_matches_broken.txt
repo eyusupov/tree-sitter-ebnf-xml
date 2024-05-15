@@ -1,0 +1,21 @@
+========================
+Broken character matches
+========================
+rule ::= [-a]
+rule ::= [a-]
+---
+(grammar
+  (rule
+    (name
+      (symbol))
+    (body
+      (char_match
+        (match_character)
+        (match_character))))
+  (rule
+    (name
+      (symbol))
+    (body
+      (char_match
+        (match_character)
+        (match_character)))))

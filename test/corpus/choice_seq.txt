@@ -1,0 +1,24 @@
+===================================================
+Concatenation has higher precedence than alteration
+===================================================
+choice_seq ::= elem1 elem2 | elem3 elem4
+
+---
+
+(grammar
+  (rule
+    (name
+      (symbol))
+    (body
+      (alternation
+        (sequence
+          (rule_ref
+            (symbol))
+          (rule_ref
+            (symbol)))
+        (sequence
+          (rule_ref
+            (symbol))
+          (rule_ref
+            (symbol)))
+    ))))

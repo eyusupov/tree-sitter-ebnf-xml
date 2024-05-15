@@ -1,0 +1,22 @@
+===========================
+Alternation with 3 elements
+===========================
+choice ::= elem1 | elem2 | elem3
+
+---
+
+(grammar
+  (rule
+    (name
+      (symbol))
+    (body
+      (alternation
+        (alternation
+          (rule_ref
+            (symbol))
+          (rule_ref
+            (symbol)))
+        (rule_ref
+          (symbol)))
+    )))
+

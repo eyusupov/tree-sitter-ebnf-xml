@@ -1,0 +1,21 @@
+=======================================
+One element or sequence of two elements
+=======================================
+choice ::= elem1 | elem2 elem3
+
+---
+
+(grammar
+  (rule
+    (name
+      (symbol))
+    (body
+      (alternation
+        (rule_ref
+          (symbol))
+        (sequence
+          (rule_ref
+            (symbol))
+          (rule_ref
+            (symbol)))
+    ))))
