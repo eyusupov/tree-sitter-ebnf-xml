@@ -2,11 +2,37 @@
   "name": "ebnf",
   "rules": {
     "grammar": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "rule"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "rule"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rule"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "rule": {
       "type": "SEQ",
@@ -263,27 +289,20 @@
       "value": "'[^']*'"
     },
     "double_quoted_string": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
             "type": "PATTERN",
             "value": "\"([^\"]|(\\\\\\\\\"))*\""
           },
-          "named": false,
-          "value": "_string"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
+          {
             "type": "PATTERN",
             "value": "\"\\\\\"\""
-          },
-          "named": false,
-          "value": "_string"
-        }
-      ]
+          }
+        ]
+      }
     },
     "optional": {
       "type": "PREC",

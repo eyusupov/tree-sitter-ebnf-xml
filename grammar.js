@@ -3,7 +3,7 @@ module.exports = grammar({
   extras: $ => [/\n/, /\s/, $.comments],
   conflicts: $ => [[ $.char_match, $.range ]],
   rules: {
-    grammar: $ => repeat($.rule),
+    grammar: $ => seq(repeat(seq($.rule, '\n')), optional($.rule)),
     rule: $ => seq(optional($.label), $.name, '::=', $.body),
     label: $ => /\[[0-9A-Za-z]+\]/,
     body: $ => $.expression,
@@ -38,7 +38,7 @@ module.exports = grammar({
     unit: $ => prec(3, seq('(', $.expression, ')')),
     string_literal: $ => choice($.double_quoted_string, $.single_quoted_string),
     single_quoted_string: $ => /'[^']*'/,
-    double_quoted_string: $ => choice(alias(/"([^"]|(\\\\"))*"/, '_string'), alias(/"\\""/, '_string')),
+    double_quoted_string: $ => token(choice(/"([^"]|(\\\\"))*"/, /"\\""/)),
     optional: $ => prec(3, seq($.expression, '?')),
     sequence: $ => prec.left(2, seq($.expression, $.expression)),
     alternation: $ => prec.left(1, seq($.expression, '|', $.expression)),

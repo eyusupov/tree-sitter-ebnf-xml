@@ -77,11 +77,6 @@
     }
   },
   {
-    "type": "double_quoted_string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "expression",
     "named": true,
     "fields": {},
@@ -338,6 +333,10 @@
     }
   },
   {
+    "type": "\n",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -390,11 +389,11 @@
     "named": false
   },
   {
-    "type": "_string",
-    "named": false
+    "type": "constraint_name",
+    "named": true
   },
   {
-    "type": "constraint_name",
+    "type": "double_quoted_string",
     "named": true
   },
   {
