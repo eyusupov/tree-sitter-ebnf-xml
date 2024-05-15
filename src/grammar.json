@@ -14,8 +14,11 @@
                 "name": "rule"
               },
               {
-                "type": "STRING",
-                "value": "\n"
+                "type": "REPEAT1",
+                "content": {
+                  "type": "STRING",
+                  "value": "\n"
+                }
               }
             ]
           }
@@ -338,6 +341,27 @@
         ]
       }
     },
+    "_expression_opt_nl": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\n"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "alternation": {
       "type": "PREC_LEFT",
       "value": 1,
@@ -346,7 +370,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "_expression_opt_nl"
           },
           {
             "type": "STRING",
@@ -480,10 +504,6 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\n"
-    },
-    {
-      "type": "PATTERN",
       "value": "\\s"
     },
     {
@@ -495,6 +515,10 @@
     [
       "char_match",
       "range"
+    ],
+    [
+      "body",
+      "_expression_opt_nl"
     ]
   ],
   "precedences": [],
