@@ -1,3 +1,0 @@
-rule ::= [abcdef]
-rule2 ::= a b c d e f
-rule3 ::= a | b | c | d | e | f
