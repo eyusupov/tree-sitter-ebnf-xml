@@ -6,7 +6,9 @@ module.exports = grammar({
     [ $.body, $._expression_opt_nl],
   ],
   rules: {
-    grammar: $ => seq(repeat(seq($.rule, repeat1('\n'))), optional($.rule)),
+    grammar: $ => seq(repeat(seq($._line, repeat1('\n'))), optional($._line)),
+    _line: $=> choice($.pragma, $.rule),
+    pragma: $ => /@\w+/, // Not defined in XML spec, but used in RDF-related specs
     rule: $ => seq(optional($.label), $.name, '::=', $.body),
     label: $ => /\[[0-9A-Za-z]+\]/,
     body: $ => $.expression,
