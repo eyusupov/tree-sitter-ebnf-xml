@@ -8,7 +8,7 @@ module.exports = grammar({
   rules: {
     grammar: $ => seq(repeat(seq($._line, repeat1('\n'))), optional($._line)),
     _line: $=> choice($.pragma, $.rule),
-    pragma: $ => /@\w+/, // Not defined in XML spec, but used in RDF-related specs
+    pragma: $ => /@.+\n/, // Not defined in XML spec, but used in RDF-related specs
     rule: $ => seq(optional($.label), $.name, '::=', $.body),
     label: $ => /\[[0-9A-Za-z]+\]/,
     body: $ => $.expression,

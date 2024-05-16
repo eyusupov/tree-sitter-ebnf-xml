@@ -140,6 +140,10 @@
       "required": false,
       "types": [
         {
+          "type": "pragma",
+          "named": true
+        },
+        {
           "type": "rule",
           "named": true
         }
@@ -410,6 +414,10 @@
   },
   {
     "type": "neg_marker",
+    "named": true
+  },
+  {
+    "type": "pragma",
     "named": true
   },
   {

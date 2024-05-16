@@ -11,7 +11,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "rule"
+                "name": "_line"
               },
               {
                 "type": "REPEAT1",
@@ -28,7 +28,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "rule"
+              "name": "_line"
             },
             {
               "type": "BLANK"
@@ -36,6 +36,23 @@
           ]
         }
       ]
+    },
+    "_line": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "pragma"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rule"
+        }
+      ]
+    },
+    "pragma": {
+      "type": "PATTERN",
+      "value": "@.+\\n"
     },
     "rule": {
       "type": "SEQ",
