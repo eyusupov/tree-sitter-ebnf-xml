@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tree-sitter-ebnf"
-description = "Ebnf grammar for tree-sitter"
+description = "Ebnf grammar for tree-sitter as defined in XML specification"
 version = "0.0.1"
 keywords = ["incremental", "parsing", "tree-sitter", "ebnf"]
 classifiers = [
