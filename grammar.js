@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: 'ebnf',
+  name: 'ebnfxml',
   extras: $ => [/\s/, $.comments],
   conflicts: $ => [
     [ $.char_match, $.range ],

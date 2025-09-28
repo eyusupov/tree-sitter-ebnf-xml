@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-ebnf",
+  "name": "tree-sitter-ebnf-xml",
   "version": "0.0.1",
   "description": "ebnf grammar for tree-sitter",
   "main": "bindings/node",
