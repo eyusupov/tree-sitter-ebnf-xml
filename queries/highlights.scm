@@ -1,2 +1,2 @@
-(double_quoted_string) @string
-(single_quoted_string) @string
+(double_quoted_string) @string.grammar
+(single_quoted_string) @string.grammar
