@@ -1,6 +1,6 @@
 VERSION := 0.0.1
 
-LANGUAGE_NAME := tree-sitter-ebnf
+LANGUAGE_NAME := tree-sitter-ebnfxml
 
 # repository
 SRC_DIR := src
