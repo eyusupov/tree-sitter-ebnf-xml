@@ -1,29 +1,29 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=62.4.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tree-sitter-ebnf"
-description = "Ebnf grammar for tree-sitter as defined in XML specification"
-version = "0.0.1"
-keywords = ["incremental", "parsing", "tree-sitter", "ebnf"]
+name = "tree-sitter-ebnfxml"
+description = "Tree-sitter parser for EBNF variant as described in XML spec"
+version = "0.1.0"
+keywords = ["incremental", "parsing", "tree-sitter", "ebnfxml"]
 classifiers = [
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
-  "Typing :: Typed"
+  "Typing :: Typed",
 ]
-requires-python = ">=3.8"
+authors = [{ name = "Eldar Yusupov", email = "eyusupov@gmail.com" }]
+requires-python = ">=3.10"
 license.text = "MIT"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/tree-sitter/tree-sitter-ebnf"
+Homepage = "https://github.com/eyusupov/tree-sitter-ebnf-xml"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.21"]
+core = ["tree-sitter~=0.24"]
 
 [tool.cibuildwheel]
-build = "cp38-*"
+build = "cp310-*"
 build-frontend = "build"
